@@ -21,8 +21,8 @@ body {
   width: 100vw;
   background-position: center;
   background-size: cover;
-  background-repeat: no-repeat;
-  /* background-repeat: repeat; */
+  /* background-repeat: no-repeat; */
+  background-repeat: repeat;
   transition: ease-in-out 0.5s;
   /* background-color: aquamarine; */
   overflow: scroll;
