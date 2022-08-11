@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <title>CodePen - Membership Registration Form</title>
+   <link rel="stylesheet" href="./query.css">
+
+</head>
+
+<body>
+   <div id="container">
+      <header>Find Hotels</header>
+      <form method="post" action="./find_results.php">
+         <fieldset>
+            <br />
+            <select id="list1" placeholder="請選擇區域" required autofocus></select>
+            <br /><br />
+            <select name="Region" id="list2" placeholder="縣市" required></select>
+            <br /><br />
+            <select name="Town" id="list3" placeholder="鄉鎮" required></select>
+            <br /> <br /> <br />
+            <label for="submit"></label>
+            <input type="submit" name="submit" id="submit" value="submit">
+         </fieldset>
+      </form>
+   </div>
+   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+   <script src="./menu.js"></script>
+</body>
+
+</html>
