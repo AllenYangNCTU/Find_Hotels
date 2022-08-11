@@ -9,4 +9,5 @@ $pdo = new PDO($dsn, 'root', 'root');
 
 
 $sql = "select Id, Name, Address, Picture1, LowestPrice, CeilingPrice, Tel from hotel where Id = '{$_GET['id']}'";
-$results = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+$details = $pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
+header("location:../find_results.php");

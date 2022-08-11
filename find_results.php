@@ -4,8 +4,8 @@ date_default_timezone_set('Asia/Taipei');
 // print_r($_POST);
 $dsn = "mysql:host=localhost;charset=utf8;dbname=api_homework";
 $pdo = new PDO($dsn, 'root', 'root');
-// $dsn = "mysql:host=localhost;charset=utf8;dbname=s1110222";
-// $pdo = new PDO($dsn, 'root', 'root');
+// $dsn="mysql:host=localhost;charset=utf8;dbname=s1110222";
+// $pdo=new PDO($dsn,'s1110222','s1110222');
 
 ?>
 <!DOCTYPE html>
@@ -36,10 +36,6 @@ $pdo = new PDO($dsn, 'root', 'root');
       align-items: center;
       /* margin: 10px auto; */
     }
-
-    /* body {
-      background: white;
-    } */
   </style>
 </head>
 
@@ -80,48 +76,7 @@ $pdo = new PDO($dsn, 'root', 'root');
                 </div>
                 <div class="modal-body">
                   <div class="modal_carousel">
-
-                    <!-- <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
-                      <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                      </div>
-                      <div class="carousel-inner">
-                        <div class="carousel-item active">
-                          <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" class="d-block w-100" alt="...">
-                          <div class="carousel-caption d-none d-md-block">
-                            <h5>First slide label</h5>
-                            <p>Some representative placeholder content for the first slide.</p>
-                          </div>
-                        </div>
-                        <div class="carousel-item">
-                          <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" class="d-block w-100" alt="...">
-                          <div class="carousel-caption d-none d-md-block">
-                            <h5>Second slide label</h5>
-                            <p>Some representative placeholder content for the second slide.</p>
-                          </div>
-                        </div>
-                        <div class="carousel-item">
-                          <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" class="d-block w-100" alt="...">
-                          <div class="carousel-caption d-none d-md-block">
-                            <h5>Third slide label</h5>
-                            <p>Some representative placeholder content for the third slide.</p>
-                          </div>
-                        </div>
-                      </div>
-                      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                      </button>
-                      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                      </button>
-                    </div> -->
-                    <!-- <br> -->
                     <div>
-
                       <p>描述</p>
                       <p>地址</p>
                       <p>電話</p>
@@ -130,14 +85,6 @@ $pdo = new PDO($dsn, 'root', 'root');
                       <p>服務項目</p>
                     </div>
                   </div>
-
-
-
-
-
-
-
-
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -145,11 +92,7 @@ $pdo = new PDO($dsn, 'root', 'root');
               </div>
             </div>
           </div>
-          <!-- <div class="modal-dialog modal-dialog-scrollable" id="detail">
-            123
-          </div> -->
         </div>
-        <!-- <div class="image shadow" style="background-image: url('https://images.unsplash.com/photo-1549180030-48bf079fb38a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=654&q=80');"> -->
         <?php
         if ($result['Picture1'] == "") {
         ?>
@@ -166,80 +109,7 @@ $pdo = new PDO($dsn, 'root', 'root');
         <?php
       }
         ?>
-
-
-
-
-
-        <!-- <div class="card glass" onmouseover="cardHover1()" onmouseout="mouseOut()">
-      <div class="card-content">
-        <h2>Sydney</h2>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-        <button>View</button>
       </div>
-      <div class="image shadow" style="background-image: url('https://images.unsplash.com/photo-1549180030-48bf079fb38a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=654&q=80');">
-      </div>
-    </div> -->
-
-
-
-
-
-
-
-
-
-
-
-
-        <!-- <div class="card glass" onmouseover="cardHover2()" onmouseout="mouseOut()">
-      <div class="card-content">
-        <h2>Tokyo</h2>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-        <button>View</button>
-      </div>
-      <div class="image shadow" style="background-image: url('https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1072&q=80');">
-      </div>
-    </div> -->
-        <!-- <div class="card glass" onmouseover="cardHover3()" onmouseout="mouseOut()">
-      <div class="card-content">
-        <h2>New York</h2>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-        <button>View</button>
-      </div>
-      <div class="image shadow" style="background-image: url('https://images.unsplash.com/photo-1518798495352-92ac911fc5fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80');">
-      </div>
-    </div>
-    <div class="card glass" onmouseover="cardHover3()" onmouseout="mouseOut()">
-      <div class="card-content">
-        <h2>New York</h2>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-        <button>View</button>
-      </div>
-      <div class="image shadow" style="background-image: url('https://images.unsplash.com/photo-1518798495352-92ac911fc5fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80');">
-      </div>
-    </div>
-    <div class="card glass" onmouseover="cardHover3()" onmouseout="mouseOut()">
-      <div class="card-content">
-        <h2>New York</h2>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-        <button>View</button>
-      </div>
-      <div class="image shadow" style="background-image: url('https://images.unsplash.com/photo-1518798495352-92ac911fc5fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80');">
-      </div>
-    </div>
-    <div class="card glass" onmouseover="cardHover3()" onmouseout="mouseOut()">
-      <div class="card-content">
-        <h2>New York</h2>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-        <button>View</button>
-      </div>
-      <div class="image shadow" style="background-image: url('https://images.unsplash.com/photo-1518798495352-92ac911fc5fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80');">
-      </div>
-    </div> -->
-      </div>
-
-      <!-- partial -->
       <script src="./script.js"></script>
 
 </body>
