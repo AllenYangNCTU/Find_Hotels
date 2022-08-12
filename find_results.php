@@ -91,7 +91,7 @@ $pdo = new PDO($dsn, 'root', 'root');
 
                   modal_content = `<div style="width:800px;height:500px;overflow:scroll;background-size: cover;margin:20px auto;"><img src="${details.Picture1}"></div><br><p>酒店描述：${details.Description}</p><br><p>酒店規格：${details.Spec}</p><br><p>價格區間：${details.LowestPrice} ~ ${details.CeilingPrice}</p><br><p>地址：${details.Address}</p><br><p>電話：${details.Tel}</p><br><p>電子信箱：${details.IndustryEmail}</p><br><p>服務設施：${details.Serviceinfo}</p><br><p>停車資訊：${details.Parkinginfo}</p><br><p>停車數量：${details.ParkingSpace}</p><br><p>總房間數：${details.TotalNumberofRooms}</p><br><p>酒店最大容留人數：${details.TotalNumberofPeople}</p><br>`;
                 }
-                $("#hotel_name").html(`<p>${details.Name}</p>`)
+                $("#hotel_name").html(`<h1 style="text-align:center">${details.Name}</h1>`)
                 $("#details").html(modal_content);
 
               })
