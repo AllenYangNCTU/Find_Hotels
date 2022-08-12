@@ -19,6 +19,10 @@ $pdo = new PDO($dsn, 'root', 'root');
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <style>
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
     .card-container {
       display: flex;
       flex-wrap: wrap;
@@ -28,13 +32,18 @@ $pdo = new PDO($dsn, 'root', 'root');
     }
 
     .modal_carousel {
-      width: 80%;
+      /* width: 80%; */
       overflow: scroll;
       display: flex;
       flex-direction: row;
       justify-content: center;
       align-items: center;
       /* margin: 10px auto; */
+    }
+
+    .details {
+      display: flex;
+      justify-content: center;
     }
   </style>
 </head>
@@ -46,7 +55,8 @@ $pdo = new PDO($dsn, 'root', 'root');
   <div>
 
     <h1><?php print("你查詢的區域為： " . $_POST['Region'] . " " . $_POST['Town']); ?></h1>
-    <button onclick="location.href='./index.html'">重新查詢</button>
+    <!-- <button type="button" class="btn btn-dark" onclick="location.href='./index.html'">重新查詢</button> -->
+    <button onclick="location.href='./index.html'" type="button" class="btn btn-info btn-lg">重新查詢</button>
   </div>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
   <script src="./menu.js"></script>
@@ -57,41 +67,36 @@ $pdo = new PDO($dsn, 'root', 'root');
     $results = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     $id = [];
     foreach ($results as $key => $result) {
-      $id[$key] = $result['Id'];
+      $id = $results[$key]['Id'];
     ?>
       <!-- <div class="card glass" onmouseover="cardHover1()" onmouseout="mouseOut()"> -->
-      <div class="card glass" onmouseover="cardHover1()" onmouseout="mouseOut()">
+      <div class="card glass" onmouseover="cardHover1()" onmouseout="mouseOut()" style="backdrop-filter: opacity(20%);">
         <div class="card-content">
           <h2><?php print($result['Name']); ?></h2>
           <p>價格： <?php print($result['LowestPrice'] . "~" . $result['CeilingPrice']); ?></p>
           <p>電話： <?php print($result['Tel']); ?></p><br>
           <p><?php print($result['Address']); ?></p><br>
-          <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">View</button>
-          <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog modal-lg">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">旅館名稱</h4>
-                </div>
-                <div class="modal-body">
-                  <div class="modal_carousel">
-                    <div>
-                      <p>描述</p>
-                      <p>地址</p>
-                      <p>電話</p>
-                      <p>電子信箱</p>
-                      <p>停車資訊</p>
-                      <p>服務項目</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
+          <button onclick="details(<?php print('`' . $id . '`') ?>)" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">View</button>
+
+          <script>
+            function details(id) {
+              $.post("./api/details.php", {
+                id: id
+              }, (details) => {
+                details = JSON.parse(details)
+                if (details.Picture1 == "") {
+
+                  modal_content = `<div style="width:800px;height:500px;overflow:scroll;background-size: cover;margin:20px auto;"><img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"></div><br><p>酒店描述：${details.Description}</p><br><p>酒店規格：${details.Spec}</p><br><p>價格區間：${details.LowestPrice} ~ ${details.CeilingPrice}</p><br><p>地址：${details.Address}</p><br><p>電話：${details.Tel}</p><br><p>電子信箱：${details.IndustryEmail}</p><br><p>服務設施：${details.Serviceinfo}</p><br><p>停車資訊：${details.Parkinginfo}</p><br><p>停車數量：${details.ParkingSpace}</p><br><p>總房間數：${details.TotalNumberofRooms}</p><br><p>酒店最大容留人數：${details.TotalNumberofPeople}</p><br>`;
+                } else {
+
+                  modal_content = `<div style="width:800px;height:500px;overflow:scroll;background-size: cover;margin:20px auto;"><img src="${details.Picture1}"></div><br><p>酒店描述：${details.Description}</p><br><p>酒店規格：${details.Spec}</p><br><p>價格區間：${details.LowestPrice} ~ ${details.CeilingPrice}</p><br><p>地址：${details.Address}</p><br><p>電話：${details.Tel}</p><br><p>電子信箱：${details.IndustryEmail}</p><br><p>服務設施：${details.Serviceinfo}</p><br><p>停車資訊：${details.Parkinginfo}</p><br><p>停車數量：${details.ParkingSpace}</p><br><p>總房間數：${details.TotalNumberofRooms}</p><br><p>酒店最大容留人數：${details.TotalNumberofPeople}</p><br>`;
+                }
+                $("#hotel_name").html(`<p>${details.Name}</p>`)
+                $("#details").html(modal_content);
+
+              })
+            }
+          </script>
         </div>
         <?php
         if ($result['Picture1'] == "") {
@@ -111,7 +116,25 @@ $pdo = new PDO($dsn, 'root', 'root');
         ?>
       </div>
       <script src="./script.js"></script>
-
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title" id="hotel_name"></h4>
+            </div>
+            <div class="modal-body">
+              <div class="modal_carousel">
+                <div id="details">
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
 </body>
 
 </html>

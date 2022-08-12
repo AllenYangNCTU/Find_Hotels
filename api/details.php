@@ -6,8 +6,6 @@ $dsn = "mysql:host=localhost;charset=utf8;dbname=api_homework";
 $pdo = new PDO($dsn, 'root', 'root');
 // $dsn = "mysql:host=localhost;charset=utf8;dbname=s1110222";
 // $pdo = new PDO($dsn, 'root', 'root');
-
-
-$sql = "select Id, Name, Address, Picture1, LowestPrice, CeilingPrice, Tel from hotel where Id = '{$_GET['id']}'";
+$sql = "select Name, Picture1, Description, Spec, LowestPrice, CeilingPrice, Address, Tel, IndustryEmail, Serviceinfo, Parkinginfo, ParkingSpace, TotalNumberofRooms, TotalNumberofPeople from hotel where Id = '{$_POST['id']}'";
 $details = $pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
-header("location:../find_results.php");
+print(json_encode($details));
