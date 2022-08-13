@@ -32,13 +32,11 @@ $pdo = new PDO($dsn, 'root', 'root');
     }
 
     .modal_carousel {
-      /* width: 80%; */
       overflow: scroll;
       display: flex;
       flex-direction: row;
       justify-content: center;
       align-items: center;
-      /* margin: 10px auto; */
     }
 
     .details {
@@ -49,13 +47,10 @@ $pdo = new PDO($dsn, 'root', 'root');
 </head>
 
 
-
 <body>
-  <!-- <div style="position:fixed;"> -->
-  <div>
 
+  <div>
     <h1><?php print("你查詢的區域為： " . $_POST['Region'] . " " . $_POST['Town']); ?></h1>
-    <!-- <button type="button" class="btn btn-dark" onclick="location.href='./index.html'">重新查詢</button> -->
     <button onclick="location.href='./index.html'" type="button" class="btn btn-info btn-lg">重新查詢</button>
   </div>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
@@ -63,14 +58,22 @@ $pdo = new PDO($dsn, 'root', 'root');
 
   <div class="card-container">
     <?php
+
+
     $sql = "select Id, Name, Address, Picture1, LowestPrice, CeilingPrice, Tel from hotel where Region = '{$_POST['Region']}' and Town = '{$_POST['Town']}'";
     $results = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     $id = [];
+
+
+
     foreach ($results as $key => $result) {
+
       $id = $results[$key]['Id'];
+
     ?>
-      <!-- <div class="card glass" onmouseover="cardHover1()" onmouseout="mouseOut()"> -->
+
       <div class="card glass" onmouseover="cardHover1()" onmouseout="mouseOut()" style="backdrop-filter: opacity(20%);">
+
         <div class="card-content">
           <h2><?php print($result['Name']); ?></h2>
           <p>價格： <?php print($result['LowestPrice'] . "~" . $result['CeilingPrice']); ?></p>
@@ -87,10 +90,12 @@ $pdo = new PDO($dsn, 'root', 'root');
                 if (details.Picture1 == "") {
 
                   modal_content = `<div style="width:800px;height:500px;overflow:scroll;background-size: cover;margin:20px auto;"><img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"></div><br><p>酒店描述：${details.Description}</p><br><p>酒店規格：${details.Spec}</p><br><p>價格區間：${details.LowestPrice} ~ ${details.CeilingPrice}</p><br><p>地址：${details.Address}</p><br><p>電話：${details.Tel}</p><br><p>電子信箱：${details.IndustryEmail}</p><br><p>服務設施：${details.Serviceinfo}</p><br><p>停車資訊：${details.Parkinginfo}</p><br><p>停車數量：${details.ParkingSpace}</p><br><p>總房間數：${details.TotalNumberofRooms}</p><br><p>酒店最大容留人數：${details.TotalNumberofPeople}</p><br>`;
+
                 } else {
 
                   modal_content = `<div style="width:800px;height:500px;overflow:scroll;background-size: cover;margin:20px auto;"><img src="${details.Picture1}"></div><br><p>酒店描述：${details.Description}</p><br><p>酒店規格：${details.Spec}</p><br><p>價格區間：${details.LowestPrice} ~ ${details.CeilingPrice}</p><br><p>地址：${details.Address}</p><br><p>電話：${details.Tel}</p><br><p>電子信箱：${details.IndustryEmail}</p><br><p>服務設施：${details.Serviceinfo}</p><br><p>停車資訊：${details.Parkinginfo}</p><br><p>停車數量：${details.ParkingSpace}</p><br><p>總房間數：${details.TotalNumberofRooms}</p><br><p>酒店最大容留人數：${details.TotalNumberofPeople}</p><br>`;
                 }
+
                 $("#hotel_name").html(`<h1 style="text-align:center">${details.Name}</h1>`)
                 $("#details").html(modal_content);
 
@@ -135,6 +140,7 @@ $pdo = new PDO($dsn, 'root', 'root');
           </div>
         </div>
       </div>
+
 </body>
 
 </html>
